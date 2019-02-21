@@ -13,14 +13,15 @@
 */
 
 
-var minsLeft = 0;
-var secsLeft = 15;
-var timeLeft = minsLeft * 60 + secsLeft;
+//Three base variables were created below. 
+var minsLeft = 30;
+var secsLeft = 0;
+var timeLeft = (minsLeft * 60) + secsLeft;
 
 var clockID = Countdown();
 
 function Countdown() {
-    var minsLeft = Math.floor(timeLeft / 60);
+    var minsLeft = Math.ceil(timeLeft / 60);
     var secsLeft = timeLeft - (minsLeft * 60);
     var minsString = addLeadingZero(minsLeft);
     var secsString = addLeadingZero(secsLeft);
@@ -28,6 +29,12 @@ function Countdown() {
     document.getElementById("seconds").innerHTML = secsString;
     checkTimer();
     var timeLeft = -1;
+}
+
+
+function stopClock() {
+    document.getElementById("TimeHead").insertAdjacentHTML("beforeend", "<br />");
+    clearInterval("clockID");
 }
 
 
